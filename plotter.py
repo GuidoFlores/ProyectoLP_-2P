@@ -19,3 +19,15 @@ print(data)
 data.plot()
 
 plt.show()
+
+#Guido Flores
+#Grafico que muestra a los juegos con su respectivo precio
+data_to_plot = data[['game', 'price']]
+
+data_to_plot.set_index('game').plot(kind='bar', legend=False)
+plt.xlabel('Game')
+plt.ylabel('Price')
+plt.title('Prices of Games')
+plt.xticks(rotation=45, ha='right')  
+plt.tight_layout()  
+plt.show()
