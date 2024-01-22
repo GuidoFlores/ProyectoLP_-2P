@@ -29,7 +29,11 @@ class ScrapperSteam
     contents.css('.tab_item').each do |games|
       titleGame = games.css('.tab_item_name').inner_text
       price = games.css('.discount_final_price').inner_text
-      
+      if price[0]== '$'
+        price = price[1,].to_f
+      else
+        price = 0.0
+      end
       discount_block = games.css('.discount_block')
       has_discount = !games.css('.discount_pct').empty?
       genres = games.css('span.top_tag').map(&:text).join("").gsub(",", "")      
