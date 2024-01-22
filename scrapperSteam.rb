@@ -30,11 +30,10 @@ class ScrapperSteam
       titleGame = games.css('.tab_item_name').inner_text
       price = games.css('.discount_final_price').inner_text
       
-      
-      
-      
-   
-      save(file, [titleGame.to_s, price.to_s])
+      discount_block = games.css('.discount_block')
+      has_discount = !games.css('.discount_pct').empty?
+      genres = games.css('span.top_tag').map(&:text).join("").gsub(",", "")      
+      save(file, [titleGame.to_s, price.to_s, has_discount, genres])
     end
     end 
   end
