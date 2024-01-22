@@ -30,7 +30,7 @@ class ScrapperSteam
       titleGame = games.css('.tab_item_name').inner_text
       price = games.css('.discount_final_price').inner_text
       if price[0]== '$'
-        price = price[1,].to_f
+        price = price[1,price.length].to_f
       else
         price = 0.0
       end
